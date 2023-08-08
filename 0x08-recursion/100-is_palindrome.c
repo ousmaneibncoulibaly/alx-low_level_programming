@@ -22,17 +22,16 @@ return (1 + _strlen_recursion(s + 1));
  */
 int pal_checker(char *s, int i, int j)
 {
-if (s[i] == s[j])
-{
-if (i > j / 2)
+if (i >= j)
 {
 return (1);
 }
-else
-return (pal_checker(s, i + 1, j - 1));
+else if (s[i] != s[j])
+{
+return (0);
 }
 else
-return (0);
+return (pal_checker(s, i + 1, j - 1));
 }
 
 /**
@@ -43,5 +42,7 @@ return (0);
  */
 int is_palindrome(char *s)
 {
-return (pal_checker(s, 0, _strlen_recursion(s + 1) - 1));
+int i;
+i = _strlen_recursion(s) - 1;
+return (pal_checker(s, 0, i));
 }
