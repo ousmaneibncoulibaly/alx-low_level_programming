@@ -6,41 +6,27 @@
  */
 int _sqrt_recursion(int n)
 {
-if (n < 0)
+if (n == 0)
 {
 return (-1);
 }
-if (n == 0 || n == 1)
-{
-return (n);
+return (check(1, n));
 }
-return (_sqrt_helper(n, 1, n));
-}
-
 /**
- * _sqrt_helper - recursive helper function to find the square root
- * @n: input number
- * @start: starting point for searching
- * @end: ending point for searching
+ * check - checks for the square root
+ * @a: starting point for searching
+ * @b: ending point for searching
  * Return: square root of n, or -1 if n doesn't have a natural square root
  */
-int _sqrt_helper(int n, int start, int end)
+int check(int a, int b)
 {
-int mid;
-
-if (start <= end)
+if (a * a == b)
 {
-mid = (start + end) / 2;
-
-if (mid *mid == n)
-{
-return (mid);
+return (a);
 }
-if (mid *mid < n)
+if (a * a > b)
 {
-return (_sqrt_helper(n, mid + 1, end));
-}
-return (_sqrt_helper(n, start, mid - 1));
-}
 return (-1);
+}
+return (check(a + 1, b));
 }
